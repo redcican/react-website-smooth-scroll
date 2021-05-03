@@ -1,4 +1,4 @@
-import React, {useState }from "react";
+import React, { useState } from "react";
 import {
   HeroContainer,
   HeroBg,
@@ -7,22 +7,21 @@ import {
   HeroH1,
   HeroP,
   HeroBtnWrapper,
-    ArrowForward,
-    ArrowRight
+  ArrowForward,
+  ArrowRight,
 } from "./HeroElements";
 import Video from "../../videos/video.mp4";
-import {Button} from '../ButtonElement';
+import { Button } from "../ButtonElement";
 
 const HeroSection = () => {
+  const [hover, setHover] = useState(false);
 
-    const [hover, setHover] = useState(false);
-
-    const onHover = () => {
-        setHover(!hover);
-    }
+  const onHover = () => {
+    setHover(!hover);
+  };
 
   return (
-    <HeroContainer>
+    <HeroContainer id='home'>
       <HeroBg>
         <VideoBg autoPlay loop muted src={Video} type="video/mp4" />
       </HeroBg>
@@ -33,8 +32,14 @@ const HeroSection = () => {
           towards your next payments.
         </HeroP>
         <HeroBtnWrapper>
-          <Button to="singup" onMouseEnter={onHover} onMouseLeave={onHover}
-            primary="true" dark="true" >
+          <Button
+            to="singup"
+            onMouseEnter={onHover}
+            onMouseLeave={onHover}
+            primary="true"
+            dark="true"
+            smooth={true} duration={500} spy={true} exact='true' offset={-80}
+          >
             Get started {hover ? <ArrowForward /> : <ArrowRight />}
           </Button>
         </HeroBtnWrapper>
